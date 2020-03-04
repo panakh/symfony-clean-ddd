@@ -10,9 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-      working-directory: user
+#     - name: Validate composer.json and composer.lock
+#       run: composer validate
+#       working-directory: user
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
