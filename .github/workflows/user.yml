@@ -10,14 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: build user context
-      run: cd user
-
     - name: Validate composer.json and composer.lock
       run: composer validate
+      working-directory: user
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
+      working-directory: user
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
