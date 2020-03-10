@@ -17,15 +17,14 @@ jobs:
     - name: Install dependencies
       run: make composer-install
       working-directory: todo
-
+    - name: stan
+      run: make stan
     - name: test
       run: make test
       working-directory: todo
-
     - name: spec-coverage
       run: make spec-coverage
       working-directory: todo
-
     - name: upload todo coverage
       uses: actions/upload-artifact@v1
       with:
