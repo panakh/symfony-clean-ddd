@@ -3,11 +3,11 @@
 namespace App\Presenter;
 
 use App\Entity\Todo;
-use App\UseCase\ListTodosOutputPortInterface;
+use App\UseCase\Ports\ListTodosOutputPortInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class ListTodosPresenter implements ListTodosOutputPortInterface, ListTodosPresenterInterface
+class ListTodosPresenter implements ListTodosOutputPortInterface
 {
     private Environment $twig;
     private array $todos = [];

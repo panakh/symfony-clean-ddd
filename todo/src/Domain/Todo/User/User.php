@@ -12,7 +12,7 @@ class User
         $this->username = $username;
     }
 
-    public function addTodo(?int $id, string $description)
+    public function addTodo(?int $id, string $description): void
     {
         $this->todos[] = new Todo($id, $description);
     }
@@ -57,7 +57,7 @@ class User
         $this->todos = $newTodos;
     }
 
-    public function hasUsername(string $username)
+    public function hasUsername(string $username): bool
     {
         return $this->username === $username;
     }

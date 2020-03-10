@@ -2,9 +2,11 @@
 
 namespace App\UseCase;
 
+use App\UseCase\Ports\ListTodosInteractorInterface;
+use App\UseCase\Ports\ListTodosOutputPortInterface;
 use Hash\Domain\Todo\User\UserService;
 
-class ListTodos implements ListTodosInteractorInterface
+class ListTodos
 {
     private UserService $userService;
     private ListTodosOutputPortInterface $outputPort;

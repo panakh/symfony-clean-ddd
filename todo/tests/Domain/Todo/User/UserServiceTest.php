@@ -3,6 +3,7 @@
 
 namespace Hash\Domain\Todo\User;
 
+use Hash\Domain\Todo\Ports\UserRepositoryInterface;
 use PHPUnit\Framework\TestCase;
 
 class UserServiceTest extends TestCase

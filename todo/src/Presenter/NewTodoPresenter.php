@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class NewTodoPresenter implements NewTodoPresenterInterface
+class NewTodoPresenter
 {
     private Environment $twig;
 

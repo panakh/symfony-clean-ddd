@@ -2,9 +2,10 @@
 
 namespace App\UseCase;
 
+use App\UseCase\Ports\UpdateTodoInteractorInterface;
 use Hash\Domain\Todo\User\UserService;
 
-class UpdateTodo implements UpdateTodoInteractorInterface
+class UpdateTodo
 {
     private UserService $userService;
 

@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class TodoEditPresenter implements TodoEditPresenterInterface
+class TodoEditPresenter
 {
     private Environment $twig;
 

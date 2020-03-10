@@ -2,9 +2,10 @@
 
 namespace App\UseCase;
 
+use App\UseCase\Ports\DeleteTodoInteractorInterface;
 use Hash\Domain\Todo\User\UserService;
 
-class DeleteTodo implements DeleteTodoInteractorInterface
+class DeleteTodo
 {
     private UserService $userService;
 

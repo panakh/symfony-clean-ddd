@@ -2,6 +2,8 @@
 
 namespace Hash\Domain\Todo\User;
 
+use Hash\Domain\Todo\Ports\UserRepositoryInterface;
+
 class UserService
 {
     private UserRepositoryInterface $repository;

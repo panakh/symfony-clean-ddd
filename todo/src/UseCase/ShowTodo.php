@@ -2,9 +2,11 @@
 
 namespace App\UseCase;
 
+use App\UseCase\Ports\ShowTodoInteractorInterface;
+use App\UseCase\Ports\ShowTodoOutputPortInterface;
 use Hash\Domain\Todo\User\UserService;
 
-class ShowTodo implements ShowTodoInteractorInterface
+class ShowTodo
 {
     private UserService $userService;
     private ShowTodoOutputPortInterface $output;

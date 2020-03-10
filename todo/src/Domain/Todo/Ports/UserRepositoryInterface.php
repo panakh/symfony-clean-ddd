@@ -1,6 +1,8 @@
 <?php
 
-namespace Hash\Domain\Todo\User;
+namespace Hash\Domain\Todo\Ports;
+
+use Hash\Domain\Todo\User\User;
 
 interface UserRepositoryInterface
 {

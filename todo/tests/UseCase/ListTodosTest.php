@@ -3,6 +3,7 @@
 namespace App\UseCase;
 
 use App\Entity\Todo;
+use App\UseCase\Ports\ListTodosOutputPortInterface;
 use App\ViewModel\TodoListViewModel;
 use Hash\Domain\Todo\User\User;
 use Hash\Domain\Todo\User\UserService;

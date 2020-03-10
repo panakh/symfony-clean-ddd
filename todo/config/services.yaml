@@ -19,6 +19,8 @@ services:
 
     Hash\Domain\Todo\User\:
         resource: '../src/Domain/Todo/User'
+    Hash\Domain\Todo\Ports\:
+        resource: '../src/Domain/Todo/Ports'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class

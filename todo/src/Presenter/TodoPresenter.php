@@ -3,11 +3,11 @@
 namespace App\Presenter;
 
 use App\Entity\Todo;
-use App\UseCase\ShowTodoOutputPortInterface;
+use App\UseCase\Ports\ShowTodoOutputPortInterface;
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
 
-class TodoPresenter implements ShowTodoOutputPortInterface, TodoPresenterInterface
+class TodoPresenter implements ShowTodoOutputPortInterface
 {
     /**
      * @var Environment
