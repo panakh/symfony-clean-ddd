@@ -127,4 +127,15 @@ class User
             }
         }
     }
+
+    public function hasTodoWithId(int $id): bool
+    {
+        foreach ($this->todos as $todo) {
+            if ($todo->getId() === $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

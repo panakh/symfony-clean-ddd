@@ -11,7 +11,6 @@ use PhpSpec\ObjectBehavior;
  */
 class DeleteTodoSpec extends ObjectBehavior
 {
-
     function let(UserService $userService)
     {
         $this->beConstructedWith($userService);

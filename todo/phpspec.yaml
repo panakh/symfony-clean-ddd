@@ -5,3 +5,10 @@ suites:
         spec_prefix:
         spec_path: '%paths.config%/spec/UseCase'
         src_path: '%paths.config%/src/'
+
+    domain:
+        namespace: Hash\Domain
+        psr4_prefix: Hash\Domain
+        spec_prefix:
+        spec_path: '%paths.config%/spec/Domain'
+        src_path: '%paths.config%/src/Domain'
