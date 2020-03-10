@@ -4,16 +4,9 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
-#     - name: Validate composer.json and composer.lock
-#       run: composer validate
-#       working-directory: user
-
     - name: Install dependencies
       run: make composer-install
       working-directory: todo
