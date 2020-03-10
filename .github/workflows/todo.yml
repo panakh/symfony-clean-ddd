@@ -12,6 +12,7 @@ jobs:
       working-directory: todo
     - name: stan
       run: make stan
+      working-directory: todo
     - name: test
       run: make test
       working-directory: todo
