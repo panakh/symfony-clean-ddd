@@ -15,7 +15,7 @@ down:
 	symfony server:stop
 open:
 	symfony open:local
-spec:
+run-spec:
 	vendor/bin/phpspec run
 describe:
 	vendor/bin/phpspec describe
