@@ -12,6 +12,7 @@ jobs:
       working-directory: todo
   analyse:
     runs-on: ubuntu-latest
+    steps:
     - name: stan
       run: make stan
       working-directory: todo
