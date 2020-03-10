@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Todo;
 use App\Form\TodoType;
 use App\Presenter\ListTodosPresenterInterface;
+use App\Presenter\NewTodoPresenterInterface;
 use App\Presenter\TodoEditPresenterInterface;
 use App\Presenter\TodoPresenterInterface;
 use App\UseCase\AddTodoInteractorInterface;
@@ -40,10 +41,14 @@ class TodoController extends AbstractController
      * @Route("/new", name="todo_new", methods={"GET","POST"})
      * @param Request $request
      * @param AddTodoInteractorInterface $addTodo
+     * @param NewTodoPresenterInterface $presenter
      * @return Response
      */
-    public function new(Request $request, AddTodoInteractorInterface $addTodo): Response
-    {
+    public function new(
+        Request $request,
+        AddTodoInteractorInterface $addTodo,
+        NewTodoPresenterInterface $presenter
+    ): Response {
         $todo = new Todo();
         $form = $this->createForm(TodoType::class, $todo);
         $form->handleRequest($request);
@@ -53,14 +58,15 @@ class TodoController extends AbstractController
             return $this->redirectToRoute('todo_index');
         }
 
-        return $this->render('todo/new.html.twig', [
-            'todo' => $todo,
-            'form' => $form->createView(),
-        ]);
+        return $presenter->getRepsonse($todo, $form);
     }
 
     /**
      * @Route("/{id}", name="todo_show", methods={"GET"})
+     * @param Todo $todo
+     * @param ShowTodoInteractorInterface $usecase
+     * @param TodoPresenterInterface $presenter
+     * @return Response
      */
     public function show(
         Todo $todo,
