@@ -15,7 +15,7 @@ jobs:
 #       working-directory: user
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: make composer-install
       working-directory: todo
 
     - name: test
