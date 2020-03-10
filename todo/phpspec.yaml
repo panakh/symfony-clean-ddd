@@ -1,0 +1,7 @@
+suites:
+    usecases:
+        namespace: App\UseCase
+        psr4_prefix: App\UseCase
+        spec_prefix:
+        spec_path: '%paths.config%/spec/UseCase'
+        src_path: '%paths.config%/src/'
