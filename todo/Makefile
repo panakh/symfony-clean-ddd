@@ -1,5 +1,6 @@
 up:
 	docker-compose up -d
+	symfony console app:create-default-user
 	symfony server:stop
 	symfony serve -d
 	symfony open:local
