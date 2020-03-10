@@ -23,7 +23,7 @@ down: compose-down stop
 open:
 	symfony open:local
 spec:
-	vendor/bin/phpspec run --no-coverage --format=pretty
+	vendor/bin/phpspec run --no-coverage --format=pretty --ansi
 describe:
 	vendor/bin/phpspec describe
 spec-coverage:
