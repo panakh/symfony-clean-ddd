@@ -1,3 +1,5 @@
+![PHP Composer](https://github.com/panakh/symfony-clean-ddd/workflows/PHP%20Composer/badge.svg)
+
 # symfony-clean-ddd
 A symfony application with DDD, bounded context,  and clean architecture
 
