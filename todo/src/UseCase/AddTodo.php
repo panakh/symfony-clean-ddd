@@ -2,7 +2,6 @@
 
 namespace App\UseCase;
 
-use App\UseCase\Ports\AddTodoInteractorInterface;
 use Hash\Domain\Todo\User\UserService;
 
 class AddTodo

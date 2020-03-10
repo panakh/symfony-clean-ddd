@@ -15,7 +15,6 @@ class AddTodoTest extends TestCase
 
     private UserService $userService;
     private AddTodo $useCase;
-    private AddTodoOutputPortInterface $outputPort;
     private string $username = 'hashin';
     private User $user;
     private string $description = 'buy milk';

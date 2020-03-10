@@ -5,8 +5,6 @@ namespace App\UseCase;
 
 
 use App\UseCase\Ports\ShowTodoOutputPortInterface;
-use App\ViewModel\TodoViewModel;
-use Hash\Domain\Todo\User\Todo;
 use Hash\Domain\Todo\User\User;
 use Hash\Domain\Todo\User\UserService;
 use Mockery;
