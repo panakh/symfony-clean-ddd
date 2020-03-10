@@ -1,19 +1,25 @@
 .PHONY: spec
-up:
+up: dbup composer-install migrate default-user stop serve open-local
+open-local:
+	symfony open:local
+serve:
+	symfony serve -d
+stop:
+	symfony server:stop
+default-user:
+	symfony console app:create-default-user
+migrate:
+	symfony console doctrine:migrations:migrate
+composer-install:
+	composer install --prefer-dist --no-suggest -o
+dbup:
 	docker-compose up -d
 	sleep 10
-	symfony console doctrine:migrations:migrate
-	symfony console app:create-default-user
-	symfony server:stop
-	symfony serve -d
-	symfony open:local
 database:
 	symfony console doctrine:database:create
-migrations:
-	symfony console doctrine:migrations:migrate
-down:
+compose-down:
 	docker-compose down
-	symfony server:stop
+down: compose-down stop
 open:
 	symfony open:local
 spec:
