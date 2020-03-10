@@ -1,3 +1,4 @@
+.PHONY: spec
 up:
 	docker-compose up -d
 	sleep 10
@@ -15,7 +16,7 @@ down:
 	symfony server:stop
 open:
 	symfony open:local
-run-spec:
+spec:
 	vendor/bin/phpspec run --no-coverage --format=pretty
 describe:
 	vendor/bin/phpspec describe
@@ -23,4 +24,6 @@ spec-coverage:
 	vendor/bin/phpspec run
 phpunit:
 	bin/phpunit
-test: run-spec phpunit
+test: spec phpunit
+clean:
+	rm -rf coverage
