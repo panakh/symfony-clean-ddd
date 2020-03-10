@@ -26,7 +26,7 @@ jobs:
       run: make spec-coverage
       working-directory: todo
 
-    - name: Upload math result for job 2
+    - name: upload todo coverage
       uses: actions/upload-artifact@v1
       with:
         name: todo-coverage
