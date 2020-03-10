@@ -13,6 +13,11 @@ jobs:
   analyse:
     runs-on: ubuntu-latest
     steps:
+    - name: download
+      uses: actions/download-artifact@v1
+      with:
+        name: todo-coverage
+        path: todo/coverage
     - name: stan
       run: make stan
       working-directory: todo
