@@ -10,6 +10,8 @@ jobs:
     - name: Install dependencies
       run: make composer-install
       working-directory: todo
+  analyse:
+    runs-on: ubuntu-latest
     - name: stan
       run: make stan
       working-directory: todo
