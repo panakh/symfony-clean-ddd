@@ -34,5 +34,4 @@ test: spec phpunit
 clean:
 	rm -rf coverage
 stan:
-	docker pull phpstan/phpstan
 	docker run -v ${PWD}:/app --rm phpstan/phpstan analyse -l 4 src
