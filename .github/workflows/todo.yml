@@ -18,8 +18,8 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
       working-directory: todo
 
-    - name: PHPunit
-      run: bin/phpunit
+    - name: test
+      run: make test
       working-directory: todo
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
