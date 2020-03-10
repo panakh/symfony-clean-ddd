@@ -10,14 +10,19 @@ jobs:
     - name: Install dependencies
       run: make composer-install
       working-directory: todo
+    - name: upload todo build
+      uses: actions/upload-artifact@v1
+        with:
+          name: todo-build
+          path: todo
   analyse:
     runs-on: ubuntu-latest
     steps:
     - name: download
       uses: actions/download-artifact@v1
       with:
-        name: todo-coverage
-        path: todo/coverage
+        name: todo-build
+        path: todo
     - name: stan
       run: make stan
       working-directory: todo
