@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PHPSpec">
+    <suites>
+      <PhpSpecSuiteConfiguration>
+        <option name="namespace" value="App\UseCase" />
+        <option name="specPath" value="spec" />
+        <option name="myPath" value="$PROJECT_DIR$/todo" />
+      </PhpSpecSuiteConfiguration>
+      <PhpSpecSuiteConfiguration>
+        <option name="namespace" value="Hash\Domain" />
+        <option name="specPath" value="spec" />
+        <option name="myPath" value="$PROJECT_DIR$/todo" />
+      </PhpSpecSuiteConfiguration>
+    </suites>
+  </component>
+</project>

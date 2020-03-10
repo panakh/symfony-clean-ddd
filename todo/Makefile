@@ -16,6 +16,11 @@ down:
 open:
 	symfony open:local
 run-spec:
-	vendor/bin/phpspec run
+	vendor/bin/phpspec run --no-coverage --format=pretty
 describe:
 	vendor/bin/phpspec describe
+spec-coverage:
+	vendor/bin/phpspec run
+phpunit:
+	bin/phpunit
+test: run-spec phpunit

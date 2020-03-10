@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/todo/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/user/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/todo/spec/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/user/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/user/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/user/vendor/doctrine/cache" />

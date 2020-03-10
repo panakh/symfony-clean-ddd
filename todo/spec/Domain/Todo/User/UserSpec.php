@@ -2,7 +2,6 @@
 
 namespace Hash\Domain\Todo\User;
 
-use Hash\Domain\Todo\User\User;
 use PhpSpec\ObjectBehavior;
 
 /**

@@ -12,3 +12,6 @@ suites:
         spec_prefix:
         spec_path: '%paths.config%/spec/Domain'
         src_path: '%paths.config%/src/Domain'
+
+extensions:
+    FriendsOfPhpSpec\PhpSpec\CodeCoverage\CodeCoverageExtension: ~
