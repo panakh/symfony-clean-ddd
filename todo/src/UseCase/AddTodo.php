@@ -2,10 +2,9 @@
 
 namespace App\UseCase;
 
-use App\ViewModel\TodoViewModel;
-use Hash\User\UserService;
+use Hash\Domain\Todo\User\UserService;
 
-class AddTodo
+class AddTodo implements AddTodoInteractorInterface
 {
     private UserService $service;
 
@@ -14,10 +13,10 @@ class AddTodo
         $this->service = $service;
     }
 
-    public function execute(TodoViewModel $viewModel)
+    public function execute(string $username, string $description): void
     {
-        $user = $this->service->getUser($viewModel->getUsername());
-        $user->addTodo(null, $viewModel->getDescription());
+        $user = $this->service->getUser($username);
+        $user->addTodo(null, $description);
         $this->service->saveUser($user);
     }
 }

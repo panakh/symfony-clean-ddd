@@ -1,10 +1,10 @@
 <?php
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
 interface UserRepositoryInterface
 {
     public function findByUsername(string $username): User;
 
-    public function saveUser(User $user): void;
+    public function saveUser(User $userAggregate): void;
 }

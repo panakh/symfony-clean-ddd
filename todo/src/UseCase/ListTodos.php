@@ -2,21 +2,22 @@
 
 namespace App\UseCase;
 
-use App\ViewModel\TodoListViewModel;
-use Hash\User\UserService;
+use Hash\Domain\Todo\User\UserService;
 
-class ListTodos
+class ListTodos implements ListTodosInteractorInterface
 {
     private UserService $userService;
+    private ListTodosOutputPortInterface $outputPort;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, ListTodosOutputPortInterface $outputPort)
     {
         $this->userService = $userService;
+        $this->outputPort = $outputPort;
     }
 
-    public function execute(TodoListViewModel $viewModel)
+    public function execute(string $username): void
     {
-        $user = $this->userService->getUser($viewModel->getUsername());
-        $viewModel->readTodosFromUserAggregate($user);
+        $user = $this->userService->getUser($username);
+        $this->outputPort->writeTodos($user->getTodos());
     }
 }

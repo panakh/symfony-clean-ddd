@@ -105,7 +105,7 @@ class User
         $toUpdate->setDescription($find['description']);
     }
 
-    public function syncFromDomainModel(\Hash\User\User $user)
+    public function syncFromDomainModel(\Hash\Domain\Todo\User\User $user)
     {
         foreach ($user->getTodos() as $todo) {
             if (null === $todo['id']) {

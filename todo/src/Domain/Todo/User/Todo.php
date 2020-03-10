@@ -1,9 +1,10 @@
 <?php
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
 class Todo
 {
+    private const DESCRIPTION = 'description';
     private string $description;
     private ?int $id;
 
@@ -26,5 +27,12 @@ class Todo
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function updateFromArrayValues(array $values): void
+    {
+        if (isset($values[static::DESCRIPTION])) {
+            $this->description = $values[static::DESCRIPTION];
+        }
     }
 }

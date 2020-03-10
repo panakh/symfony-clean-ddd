@@ -6,36 +6,26 @@ use App\Entity\Todo;
 
 class TodoListViewModel
 {
-    private array $todos = [];
-    /**
-     * @var string
-     */
-    private string $username;
+    private array $persistenceModel = [];
 
-    public function __construct(string $username)
+    public function __construct(array $todos)
     {
-        $this->username = $username;
-    }
+        foreach ($todos as $todo) {
+            $persisted = new Todo();
+            if (isset($todo['id'])) {
+                $persisted->setId($todo['id']);
+            }
 
-    public function getTodos(): array
-    {
-        return $this->todos;
-    }
+            if (isset($todo['description'])) {
+                $persisted->setDescription($todo['description']);
+            }
 
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    public function readTodosFromUserAggregate(\Hash\User\User $user)
-    {
-        foreach ($user->getTodos() as $todo) {
-            $this->addTodo($todo['id'], $todo['description']);
+            $this->persistenceModel[] = $persisted;
         }
     }
 
-    private function addTodo(int $id, string $description): void
+    public function getPersistenceModel(): array
     {
-        $this->todos[] = (new Todo())->setDescription($description)->setId($id);
+        return $this->persistenceModel;
     }
 }

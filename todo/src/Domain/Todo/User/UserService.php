@@ -1,6 +1,6 @@
 <?php
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
 class UserService
 {

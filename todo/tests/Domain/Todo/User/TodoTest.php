@@ -1,8 +1,7 @@
 <?php
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
-use Hash\User\Todo;
 use PHPUnit\Framework\TestCase;
 
 class TodoTest extends TestCase

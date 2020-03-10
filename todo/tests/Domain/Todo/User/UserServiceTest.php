@@ -1,11 +1,8 @@
 <?php
 
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
-use Hash\User\User;
-use Hash\User\UserRepositoryInterface;
-use Hash\User\UserService;
 use PHPUnit\Framework\TestCase;
 
 class UserServiceTest extends TestCase

@@ -4,8 +4,8 @@ namespace App\UseCase;
 
 use App\Entity\Todo;
 use App\ViewModel\TodoListViewModel;
-use Hash\User\User;
-use Hash\User\UserService;
+use Hash\Domain\Todo\User\User;
+use Hash\Domain\Todo\User\UserService;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -16,21 +16,30 @@ class ListTodosTest extends TestCase
 
     private ListTodos $usecase;
     private UserService $userService;
+    private ListTodosOutputPortInterface $outputPort;
+    private string $username = 'hashin';
+    private User $user;
+    private array $todos = [
+        [
+            'id' => 1,
+            'description' => 'buy milk',
+        ]
+    ];
+
 
     public function setUp(): void
     {
         $this->userService = Mockery::mock(UserService::class);
-        $this->usecase = new ListTodos($this->userService);
+        $this->outputPort = Mockery::mock(ListTodosOutputPortInterface::class);
+        $this->usecase = new ListTodos($this->userService, $this->outputPort);
+        $this->user = Mockery::mock(User::class);
     }
 
     public function testAddUseCase()
     {
-        $viewModel = Mockery::mock(TodoListViewModel::class);
-        $user = Mockery::mock(User::class);
-        $username = 'hashin';
-        $viewModel->expects()->getUsername()->andReturn($username);
-        $this->userService->expects()->getUser($username)->andReturn($user);
-        $viewModel->expects()->readTodosFromUserAggregate($user);
-        $this->usecase->execute($viewModel);
+        $this->userService->expects()->getUser($this->username)->andReturn($this->user);
+        $this->user->expects()->getTodos()->andReturn($this->todos);
+        $this->outputPort->expects()->writeTodos($this->todos);
+        $this->usecase->execute($this->username);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
 class User
 {
@@ -79,5 +79,52 @@ class User
         }
 
         return $todos;
+    }
+
+    public function getTodo($id): array
+    {
+        $foundTodo = null;
+        foreach ($this->todos as $todo) {
+            if ($todo->getId() == $id) {
+                $foundTodo = $todo;
+                break;
+            }
+        }
+
+        if (null === $foundTodo) {
+            throw new TodoNotFoundException();
+        }
+
+        return [
+            'id' => $foundTodo->getId(),
+            'description' => $foundTodo->getDescription()
+        ];
+    }
+
+    public function updateTodo(int $todoId, array $values)
+    {
+
+        $found = null;
+
+        foreach ($this->todos as $todo) {
+            /** @var Todo $found */
+            $found = $todo;
+        }
+
+        if (null === $found) {
+            throw new TodoNotFoundException();
+        }
+
+        $found->updateFromArrayValues($values);
+
+    }
+
+    public function deleteTodo(int $id): void
+    {
+        foreach ($this->todos as $key => $todo) {
+            if ($todo->getId() === $id) {
+                unset($this->todos[$key]);
+            }
+        }
     }
 }

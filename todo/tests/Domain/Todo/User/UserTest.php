@@ -1,6 +1,6 @@
 <?php
 
-namespace Hash\User;
+namespace Hash\Domain\Todo\User;
 
 use PHPUnit\Framework\TestCase;
 
@@ -47,5 +47,33 @@ class UserTest extends TestCase
         $this->expectException(TodoNotFoundException::class);
         $this->expectExceptionMessage('Todo not found');
         $user->removeTodoWithDescription('something');
+    }
+
+    public function testGetTodo()
+    {
+        $description = 'buy milk';
+        $this->user->addTodo(1, $description);
+        //todo cast
+        $todo = $this->user->getTodo(1);
+        $this->assertEquals(1, $todo['id']);
+        $this->assertEquals($description, $todo['description']);
+    }
+
+    public function testUpdatesTodo()
+    {
+        $todoId = 1;
+        $this->user->addTodo($todoId, 'buy milk');
+        $description = 'buy semi skimmed milk';
+        $this->user->updateTodo($todoId, ['description' => $description]);
+        $todo = $this->user->getTodo($todoId);
+        $this->assertEquals($todoId, $todo['id']);
+        $this->assertEquals( $description, $todo['description']);
+    }
+
+    public function testDeletesTodo()
+    {
+        $this->user->addTodo(1, 'buy milk');
+        $this->user->deleteTodo(1);
+        $this->assertFalse($this->user->hasTodoWithDescription('buy milk'));
     }
 }

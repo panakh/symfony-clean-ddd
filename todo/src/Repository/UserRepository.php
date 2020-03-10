@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Hash\User\UserRepositoryInterface;
+use Hash\Domain\Todo\User\UserRepositoryInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -49,13 +49,13 @@ class UserRepository extends ServiceEntityRepository  implements UserRepositoryI
     }
     */
 
-    public function findByUsername(string $username): \Hash\User\User
+    public function findByUsername(string $username): \Hash\Domain\Todo\User\User
     {
         $persistenceModel = $this->findOneBy([
             'username' => $username,
         ]);
 
-        $user = new \Hash\User\User($persistenceModel->getUsername());
+        $user = new \Hash\Domain\Todo\User\User($persistenceModel->getUsername());
         foreach ($persistenceModel->getTodos() as $todo) {
             $user->addTodo($todo->getId(), $todo->getDescription());
         }
@@ -63,16 +63,32 @@ class UserRepository extends ServiceEntityRepository  implements UserRepositoryI
         return $user;
     }
 
-    public function saveUser(\Hash\User\User $user): void
+    public function saveUser(\Hash\Domain\Todo\User\User $userAggregate): void
     {
         /** @var User $persistenceModel */
         $persistenceModel = $this->findOneBy([
-            'username' => $user->getUsername(),
+            'username' => $userAggregate->getUsername(),
         ]);
 
-        $persistenceModel->syncFromDomainModel($user);
+        $persistenceModel->syncFromDomainModel($userAggregate);
+
+        $this->removeRemovedTodos($persistenceModel, $userAggregate);
 
         $this->getEntityManager()->persist($persistenceModel);
         $this->getEntityManager()->flush();
+    }
+
+    private function removeRemovedTodos(User $persistenceModel, \Hash\Domain\Todo\User\User $aggregate)
+    {
+        $todoIds = array_map(function ($value) {
+            return $value['id'];
+        }, $aggregate->getTodos());
+
+        foreach ($persistenceModel->getTodos() as $savedTodo) {
+            if (!in_array($savedTodo->getId(), $todoIds)) {
+                $persistenceModel->removeTodo($savedTodo);
+                $this->getEntityManager()->remove($savedTodo);
+            }
+        }
     }
 }
