@@ -22,6 +22,16 @@ jobs:
       run: make test
       working-directory: todo
 
+    - name: spec-coverage
+      run: make spec-coverage
+      working-directory: todo
+
+    - name: Upload math result for job 2
+      uses: actions/upload-artifact@v1
+      with:
+        name: todo-coverage
+        path: todo/coverage
+
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
