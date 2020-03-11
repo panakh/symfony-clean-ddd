@@ -37,3 +37,5 @@ clean:
 	rm -rf coverage
 stan:
 	docker run -v ${PWD}:/app --rm phpstan/phpstan analyse -l 4 src
+symfony:
+	curl -sS https://get.symfony.com/cli/installer | bash

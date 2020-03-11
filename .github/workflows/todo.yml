@@ -8,11 +8,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: make composer-install
+      run: make composer-install symfony
       working-directory: todo
     - name: stan
       run: make stan
       working-directory: todo
+    - name: Shutdown Ubuntu MySQL (SUDO)
+      run: sudo service mysql stop
     - name: test
       run: make test
       working-directory: todo
