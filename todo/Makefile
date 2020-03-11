@@ -12,9 +12,19 @@ migrate:
 	symfony console --no-interaction doctrine:migrations:migrate
 composer-install:
 	composer install --prefer-dist --no-suggest -o
+
 dbup:
 	docker-compose up -d
-	sleep 20
+	while [ 1 ] ; do \
+		mysqladmin -uroot -h 127.0.0.1 ping  ; \
+		if [ $$? -eq 0 ]; \
+		then \
+		  break ; \
+		fi; \
+		echo sleeping ; \
+		sleep 5s ; \
+	done; \
+	true
 database:
 	symfony console doctrine:database:create
 compose-down:
