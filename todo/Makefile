@@ -28,6 +28,8 @@ describe:
 	vendor/bin/phpspec describe
 spec-coverage:
 	vendor/bin/phpspec run
+unit-coverage:
+	bin/phpunit --coverage-html coverage-report
 phpunit:
 	bin/phpunit
 test: spec phpunit
