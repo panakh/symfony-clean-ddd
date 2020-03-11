@@ -14,7 +14,7 @@ composer-install:
 	composer install --prefer-dist --no-suggest -o
 dbup:
 	docker-compose up -d
-	sleep 10
+	sleep 20
 database:
 	symfony console doctrine:database:create
 compose-down:
