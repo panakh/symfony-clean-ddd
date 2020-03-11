@@ -2,29 +2,27 @@
 
 namespace App\Tests\Controller;
 
+use Mockery\Exception;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Panther\PantherTestCase;
 
-class CreateTodoTest extends WebTestCase
+class CreateTodoTest extends PantherTestCase
 {
     public function testCreateTodo()
     {
-        $client = static::createClient();
+        $client = static::createPantherClient();
         $crawler = $client->request('GET', '/todo/new');
-
-        $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Create new Todo');
-        $form = $crawler->selectButton('Save')->form(
+        $client->submitForm('Save',
             [
-                'todo' => [
-                    'description' => 'buy milk',
-                    'user' => 1,
-                ]
+                'todo[description]' => 'buy milk',
+                'todo[user]' => 1,
             ]
         );
-        $client->followRedirects();
-        $client->submit($form);
-        $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Todo index');
         $this->assertSelectorTextContains('body > table > tbody > tr > td:nth-child(2)', 'buy milk');
+        $client->clickLink('show');
+        $client->executeScript("document.querySelector('button').click()");
+        $client->getWebDriver()->switchTo()->alert()->accept();
     }
 }
