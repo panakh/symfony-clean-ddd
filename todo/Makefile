@@ -39,4 +39,4 @@ stan:
 	docker run -v ${PWD}:/app --rm phpstan/phpstan analyse -l 4 src
 symfony:
 	curl -sS https://get.symfony.com/cli/installer | bash
-	 mv /home/runner/.symfony/bin/symfony /usr/local/bin/symfony
+	sudo mv /home/runner/.symfony/bin/symfony /usr/local/bin/symfony
