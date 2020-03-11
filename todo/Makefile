@@ -9,7 +9,7 @@ stop:
 default-user:
 	symfony console app:create-default-user
 migrate:
-	symfony console doctrine:migrations:migrate
+	symfony console --no-interaction doctrine:migrations:migrate
 composer-install:
 	composer install --prefer-dist --no-suggest -o
 dbup:
@@ -30,9 +30,9 @@ spec-coverage:
 	vendor/bin/phpspec run
 unit-coverage:
 	bin/phpunit --coverage-html coverage-report
-phpunit:
+phpunit:dbup migrate default-user
 	bin/phpunit
-test: spec phpunit
+test: spec phpunit compose-down
 clean:
 	rm -rf coverage
 stan:
