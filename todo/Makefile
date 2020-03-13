@@ -12,9 +12,8 @@ migrate:
 	symfony console --no-interaction doctrine:migrations:migrate
 composer-install:
 	composer install --prefer-dist --no-suggest -o
-
 dbup:
-	docker-compose up -d
+	docker-compose up -d --remove-orphans
 	while [ 1 ] ; do \
 		mysqladmin -uroot -h 127.0.0.1 ping  ; \
 		if [ $$? -eq 0 ]; \
